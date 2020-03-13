@@ -33,6 +33,10 @@ use DDTrace\Integrations\ZendFramework\ZendFrameworkIntegration;
 use DDTrace\Integrations\ZendFramework\ZendFrameworkSandboxedIntegration;
 use DDTrace\Log\LoggingTrait;
 
+// custom integrations
+use DDTrace\Integrations\Redis\RedisIntegration;
+use DDTrace\Integrations\Phalcon\PhalconIntegration;
+
 /**
  * Loader for all integrations currently enabled.
  */
@@ -70,6 +74,10 @@ class IntegrationsLoader
         SymfonyIntegration::NAME => '\DDTrace\Integrations\Symfony\SymfonyIntegration',
         WebIntegration::NAME => '\DDTrace\Integrations\Web\WebIntegration',
         ZendFrameworkIntegration::NAME => '\DDTrace\Integrations\ZendFramework\ZendFrameworkIntegration',
+
+
+        RedisIntegration::NAME => '\DDTrace\Integrations\Redis\RedisIntegration',
+        PhalconIntegration::NAME => '\DDTrace\Integrations\Phalcon\PhalconIntegration',
     ];
 
     /**
