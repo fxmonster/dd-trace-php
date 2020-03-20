@@ -67,6 +67,26 @@ class RedisIntegration extends Integration
             return RedisIntegration::traceCommand($this, 'EXISTS', $args, $key);
         });
 
+        dd_trace('Redis', 'multi', function () {
+            $args = func_get_args();
+            return RedisIntegration::traceCommand($this, 'MULTI', $args);
+        });
+
+        dd_trace('Redis', 'exec', function () {
+            $args = func_get_args();
+            return RedisIntegration::traceCommand($this, 'EXEC', $args);
+        });
+
+        dd_trace('Redis', 'keys', function ($key) {
+            $args = func_get_args();
+            return RedisIntegration::traceCommand($this, 'KEYS', $args, $key);
+        });
+
+        dd_trace('Redis', 'hGetAll', function ($key) {
+            $args = func_get_args();
+            return RedisIntegration::traceCommand($this, 'HGETALL', $args, $key);
+        });
+
         dd_trace('Redis', 'hMGet', function ($key) {
             $args = func_get_args();
             return RedisIntegration::traceCommand($this, 'HMGET', $args, $key);
