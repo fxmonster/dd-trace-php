@@ -114,7 +114,6 @@ return [
     __DIR__ . '/../src/DDTrace/StartSpanOptions.php',
     
     
-// Custom integrations
     __DIR__ . '/../src/DDTrace/Integrations/Redis/RedisIntegration.php',
     __DIR__ . '/../src/DDTrace/Integrations/Phalcon/PhalconIntegration.php',
 ];
