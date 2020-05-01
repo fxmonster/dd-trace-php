@@ -7,10 +7,10 @@
 
 #include "compatibility.h"
 
-#define DDTRACE_DISPATCH_INNERHOOK (1 << 0)
-#define DDTRACE_DISPATCH_INSTRUMENT_WHEN_LIMITED (1 << 1)
-#define DDTRACE_DISPATCH_POSTHOOK (1 << 2)
-#define DDTRACE_DISPATCH_PREHOOK (1 << 3)
+#define DDTRACE_DISPATCH_INNERHOOK (1u << 0u)
+#define DDTRACE_DISPATCH_INSTRUMENT_WHEN_LIMITED (1u << 1u)
+#define DDTRACE_DISPATCH_POSTHOOK (1u << 2u)
+#define DDTRACE_DISPATCH_PREHOOK (1u << 3u)
 
 typedef struct ddtrace_dispatch_t {
     uint32_t options;
@@ -57,17 +57,6 @@ void ddtrace_dispatch_reset(TSRMLS_D);
 #define NUM_ADDITIONAL_ARGS() EX(call)->num_additional_args
 #define OBJECT() (EX(call) ? EX(call)->object : NULL)
 #endif
-
-inline void *zend_hash_str_find_ptr(const HashTable *ht, const char *key, size_t length) {
-    void **rv = NULL;
-    zend_hash_find(ht, key, length, (void **)&rv);
-
-    if (rv) {
-        return *rv;
-    } else {
-        return NULL;
-    }
-}
 
 void ddtrace_class_lookup_release_compat(void *zv);
 
